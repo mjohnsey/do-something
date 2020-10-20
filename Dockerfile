@@ -13,6 +13,8 @@ RUN yarn --pure-lockfile
 
 # Package the CLI
 COPY . .
+# fail fast if typescript is wrong
+RUN yarn run tsc -b
 RUN yarn run oclif-dev pack -t "linux-x64"
 
 # copy the output archive to a nice name
